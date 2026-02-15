@@ -51,15 +51,14 @@ def run_pipeline():
     print("script: ", script)
     print("----------------------------------------------------------") 
 
-    # video_path = retry_with_feedback(
-    #     lambda: generate_video(script),
-    #     max_retries=2,
-    #     name="Video Generation"
-    # )
-    # print("----------------------------------------------------------")
-    # print("video: ", video_path)
-    # print("----------------------------------------------------------")
-    video_path = "youtube_kids_video_25.mp4"
+    video_path = retry_with_feedback(
+        lambda: generate_video(script),
+        max_retries=2,
+        name="Video Generation"
+    )
+    print("----------------------------------------------------------")
+    print("video: ", video_path)
+    print("----------------------------------------------------------")
 
     metadata = retry_with_feedback(
         lambda: generate_metadata(script),
