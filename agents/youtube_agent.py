@@ -13,6 +13,7 @@ Goals:
 - Include light use of relevant emojis.
 - Write in simple, friendly language suitable for parents reading about toddler content.
 - Add 5–10 relevant hashtags at the end of the description.
+- MAx 5000 characters in the Desciption 
 
 Provide 15–20 SEO-optimized YouTube tags.
 Tags should:
