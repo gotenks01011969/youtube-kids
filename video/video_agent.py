@@ -109,8 +109,17 @@ def generate_video(script: dict) -> str:
 
     logger.info(f"HeyGen video_id: {video_id}")
 
+    start_time = time.time()
+    timeout = 3600  # 1 hour in seconds
+
     # Polling loop
     while True:
+        # Check if 1 hour has passed
+        elapsed_time = time.time() - start_time
+        if elapsed_time >= timeout:
+            print("1 hour timeout exceeded - raising exception")
+            raise RuntimeError(f"Video generation took too much time")
+        
         status_response = _get_video_status(video_id)
         status = status_response.get("data", {}).get("status")
 
