@@ -14,7 +14,7 @@ Goals:
 - Write in simple, friendly language suitable for parents reading about toddler content.
 - Add 5–10 relevant hashtags at the end of the description.
 
-Provide 15–25 SEO-optimized YouTube tags.
+Provide 15–20 SEO-optimized YouTube tags.
 Tags should:
 - Focus on toddler learning
 - Include variations (e.g., “learning shapes,” “shapes for toddlers,” “toddler educational video”)
@@ -22,8 +22,8 @@ Tags should:
 - Not contain hashtags
 - Not repeat the exact same phrase unnecessarily
 * Tags Rules: 
-- each tag 1–5 words
-- total ≤500 characters (in total of all tage combined)
+- each tag 1–3 words (<= 30 characters)
+- total <= 500 characters (in total of all tags combined)
 - lowercase, relevant, no duplicates
 - no special characters or unrelated terms
 

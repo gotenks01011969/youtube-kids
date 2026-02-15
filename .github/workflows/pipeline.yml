@@ -38,9 +38,11 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add used_topics.txt
-          git commit -m "Update used topics"
+          git add memory/recent_formats.json
+          git add memory/recent_topics.json
+          git diff --cached --quiet || git commit -m "Update used topics & formats"
           git push
+
 
       - name: 📁 Upload logs on failure
         if: failure()
