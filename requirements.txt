@@ -1,0 +1,14 @@
+# Core HTTP + API
+requests
+
+# OpenAI / Groq-compatible client
+openai
+
+# Google / YouTube upload
+google-api-python-client
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+
+# Utilities
+python-dotenv
