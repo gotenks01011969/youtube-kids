@@ -66,8 +66,7 @@ def run_pipeline():
     )
     print("----------------------------------------------------------")
     print("metadata: ", metadata)
-    # upload_to_youtube(video_path, topic["topic"], metadata)
-    upload_to_youtube(video_path, topic["topic"], metadata, "private")
+    upload_to_youtube(video_path, topic["topic"], metadata)
     print("Uploaded to Youtube")
     print("----------------------------------------------------------")
     
