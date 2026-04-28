@@ -5,13 +5,13 @@ YOUTUBE_CLIENT_ID = "18489446057-5kngc92okd7a85g1nnuc3n2kpc2prn1p.apps.googleuse
 YOUTUBE_CLIENT_SECRET = "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"
 YOUTUBE_REFRESH_TOKEN = "1//0g-QyJqpaFzfUCgYIARAAGBASNwF-L9IrFiBB6lC3LwsJbbPABTLP2Yjadpli_xRzyH-5ue4E5EACEdaGaODJ-VqF4UVTdG4XL5I"
 
-heygen_keys = ["sk_V2_hgu_k4Ihg5OYEP5_tniz0LrLlntbIF4nRUAPjpwdTYUdpxwA",
-               "sk_V2_hgu_k4Ihg5OYEP5_tniz0LrLlntbIF4nRUAPjpwdTYUdpxwA",
-               "sk_V2_hgu_k4Ihg5OYEP5_tniz0LrLlntbIF4nRUAPjpwdTYUdpxwA",
-               "sk_V2_hgu_k4Ihg5OYEP5_tniz0LrLlntbIF4nRUAPjpwdTYUdpxwA",
-               "sk_V2_hgu_k4Ihg5OYEP5_tniz0LrLlntbIF4nRUAPjpwdTYUdpxwA",
-               "sk_V2_hgu_k4Ihg5OYEP5_tniz0LrLlntbIF4nRUAPjpwdTYUdpxwA",
-               "sk_V2_hgu_k4Ihg5OYEP5_tniz0LrLlntbIF4nRUAPjpwdTYUdpxwA"]
+heygen_keys = ["sk_V2_hgu_k4o0p1qIDju_1aecTTg1iQGzHjlyVrs3hQWdbVNZC0xG",
+               "sk_V2_hgu_k4o0p1qIDju_1aecTTg1iQGzHjlyVrs3hQWdbVNZC0xG",
+               "sk_V2_hgu_k4o0p1qIDju_1aecTTg1iQGzHjlyVrs3hQWdbVNZC0xG",
+               "sk_V2_hgu_k4o0p1qIDju_1aecTTg1iQGzHjlyVrs3hQWdbVNZC0xG",
+               "sk_V2_hgu_k4o0p1qIDju_1aecTTg1iQGzHjlyVrs3hQWdbVNZC0xG",
+               "sk_V2_hgu_k4o0p1qIDju_1aecTTg1iQGzHjlyVrs3hQWdbVNZC0xG",
+               "sk_V2_hgu_k4o0p1qIDju_1aecTTg1iQGzHjlyVrs3hQWdbVNZC0xG"]
 
 # heygen_keys = ["sk_V2_hgu_kgG1cBpAA2w_NUD61AFzVSQI2vkPS0yofixUCZpfwJd5",
 #                "sk_V2_hgu_kqn88Uaqv9T_c0z1vRKiLrvGRelkjMzccihUMaGBySxm",
