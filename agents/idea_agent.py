@@ -2,19 +2,21 @@ from utils.llm import call_llm
 from utils.memory import get_recent_formats
 
 SYSTEM_PROMPT = """
-Based on a given topic, create ONE simple, engaging animated video "idea" for children aged 1–3,
-The idea must be suitable for a 50–60 second YouTube Kids animated video with simple visuals and narration.
+Based on a given topic, create ONE extremely simple animated video "idea" for children aged 1–2.
+The idea must be suitable for a short YouTube Kids video made from simple static images and narration.
 
 CORE REQUIREMENTS (NON-NEGOTIABLE)
 
-• Total video length: 50–60 seconds
+• Use only as many scenes as the topic naturally needs
+• Prefer 2–4 object scenes
+• Do not add filler scenes just to reach a fixed duration
 • Predictable and repeatable structure
 • No challenges, quizzes, scoring, or testing
 • Must work as a sequence of simple static images with spoken narration
 
 AGE-APPROPRIATENESS (CRITICAL)
 
-• Designed specifically for ages 1–3
+• Designed specifically for ages 1–2
 • Use only simple, familiar, everyday objects
 • Focus on concrete, visible concepts only
 • The idea must follow a simple, repeatable pattern
@@ -22,12 +24,14 @@ AGE-APPROPRIATENESS (CRITICAL)
 IMAGE SIMPLICITY REQUIREMENTS
 
 • Each scene should need only ONE main object on screen
-• A final summary scene may show up to THREE very simple objects
+• Do not create a final combined image scene
+• Do not ask for multiple examples in one image
 • Avoid scenes that require text, letters, numbers, signs, labels, tiny details, exact facial expressions, complex backgrounds, or multiple actions
 • Avoid motion-dependent ideas like rolling, spinning, flying, growing, opening, changing, hiding, or transforming
 • Prefer ideas where the narrator can say the same simple sentence pattern for each object
 • Good pattern: "Red apple. Red apple is red."
 • Bad pattern: "The apple rolls past the clock while the sun rises."
+• Bad pattern: "Apple, strawberry, and fire truck appear together."
 
 OUTPUT RULES (STRICT)
 

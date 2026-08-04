@@ -13,7 +13,11 @@ def generate_image(
     hf_token = os.getenv("HF_TOKEN")
     job = {
         "prompt": prompt,
-        "negative_prompt": "watermark, logo, blurry, low quality, text artifacts",
+        "negative_prompt": (
+            "text, words, captions, title, label, letters, numbers, watermark, logo, signature, "
+            "multiple panels, split screen, collage, many objects, crowded scene, busy background, "
+            "realistic photo, scary, dark, blurry, low quality, distorted face, extra limbs, text artifacts"
+        ),
         "width": 768,
         "height": 768,
         "num_inference_steps": 4,

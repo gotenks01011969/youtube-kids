@@ -1,21 +1,23 @@
 from utils.llm import call_llm
-TARGET_VIDEO_DURATION = 45  # seconds
+TARGET_VIDEO_DURATION = 25  # seconds
 
 SYSTEM_PROMPT = """
 You are an expert preschool video creator. 
-Transform the provided script into a fun, highly engaging 50–60 second videoscript (narration-visual pair) for toddlers (ages 1–3).
+Transform the provided script into a fun, highly engaging, very simple video script (narration-visual pair) for toddlers (ages 1–2).
 The video should hook kid's attention instantly in the first few seconds.
 
 SCENE RULES
 
 - Each scene is made up of narration & visuals
 - One simple idea per scene
-- 5–10 seconds per scene
-- Start with a simple intro using one object that represents the topic
-- End with a gentle summary using only the main examples
-- Create 4–6 scenes total
-- Each normal scene must show ONE main object only
-- The final summary scene may show up to THREE main objects, only if they are simple
+- 4–8 seconds per scene
+- Create only as many scenes as the topic naturally needs
+- Prefer 2–4 scenes total
+- Do not add filler scenes to reach a fixed scene count
+- Do not create an intro title card
+- Do not create a final combined summary image
+- Every scene must show ONE main object only
+- If a closing scene is needed, repeat ONE previous object with a simple goodbye narration
 
 NARRATION RULES
 
@@ -39,7 +41,9 @@ Each visual MUST:
 - Have high color contrast
 - Large, centered main subject
 - Feel emotionally warm and welcoming
-- Have a simple clean background
+- Have a playful colorful background that is still simple
+- Background may include soft pastel dots, stars, clouds, bubbles, flowers, or rounded shapes
+- Background must not distract from the single main subject
 - Be understandable as one static image
 
 The main subject MUST:
@@ -51,17 +55,21 @@ TEXT-TO-IMAGE SIMPLICITY RULES (MANDATORY)
 
 Each visual MUST:
 - Contain ONE large main object for normal scenes
+- Contain ONE large main object for every scene, including the last scene
 - Avoid text, title text, labels, letters, numbers, signs, captions, or words on screen
-- Avoid tiny details, busy backgrounds, many objects, complex hands, exact poses, or precise facial expressions
+- Avoid tiny details, busy backgrounds, many objects, combined-object scenes, complex hands, exact poses, or precise facial expressions
 - Avoid complex actions such as rolling, spinning, flying, jumping, pouring, opening, transforming, growing, or hiding
 - Avoid scenes that require a before/after relationship
 - Avoid objects that are easy to generate incorrectly or unsafely
 
 Good visual:
-"A single large red apple, smiling, centered on a simple light blue background"
+"A single large red apple, smiling, centered on a pastel yellow background with soft colorful dots"
 
 Bad visual:
 "A red apple rolling past a clock while three children wave under title text"
+
+Bad visual:
+"A leaf, grass, and frog together in one image"
 
 FINAL QUALITY CHECK (INTERNAL)
 - If a visual would be hard for a text-to-image model to generate correctly, simplify it.
@@ -84,7 +92,8 @@ CONTENT RESTRICTIONS
 - No scene title cards
 - No written text in visuals
 - No crowded scenes
-- No more than one main object per normal scene
+- No more than one main object per scene
+- No final combined image
 
 OUTPUT RULES (NON-NEGOTIABLE)
 - VALID JSON ONLY
