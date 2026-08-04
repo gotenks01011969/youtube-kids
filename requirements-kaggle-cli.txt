@@ -1,0 +1,2 @@
+kaggle==2.2.2
+kagglesdk==0.1.30

@@ -8,7 +8,7 @@ from video.video_agent import generate_video
 from uploader.youtube_uploader import upload_to_youtube
 from utils.logger import logger
 from utils.memory import record_video
-from utils.cleanup import cleanup
+from utils.cleanup import cleanup_run_artifacts
 
 
 def run_pipeline():
@@ -71,7 +71,7 @@ def run_pipeline():
     print("----------------------------------------------------------")
     
     record_video(topic["topic"], idea["idea"])
-    cleanup(video_path)
+    cleanup_run_artifacts(video_path)
     print("----------------------------------------------------------")
     print("Cleanup Done")
     print("----------------------------------------------------------")

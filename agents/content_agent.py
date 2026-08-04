@@ -11,6 +11,17 @@ The script must:
 - Include content/sentences appropriate for toddlers.
 - Be high-energy, joyful, and emotionally positive.
 - Stay focused on the learning topic/idea
+- Use short sentences that can be matched to simple static images.
+- Mention only things that can be shown clearly in one image.
+- Use a repeated sentence pattern across examples.
+
+IMAGE-FRIENDLY CONTENT RULES
+
+- Keep each example focused on ONE familiar object.
+- Do not require motion, timing, sequence, transformation, or cause/effect to understand the scene.
+- Avoid crowded scenes, many objects, small details, text on screen, letters, numbers, signs, labels, or complex backgrounds.
+- Avoid abstract descriptions like "kind", "different", "same but bigger", "near/far", or "before/after".
+- Prefer concrete lines such as "This is a red apple. The apple is red."
 
 Do not introduce unrelated themes.
 

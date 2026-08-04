@@ -18,7 +18,7 @@ def retry_upload(fn, retries=3, base_delay=10):
             time.sleep(delay)
 
 
-def upload_to_youtube(video_path: str, title: str, metadata: dict, privacy_status="public"):
+def upload_to_youtube(video_path: str, title: str, metadata: dict, privacy_status="private"):
     
     description = metadata["description"]
     tags = metadata["tags"]

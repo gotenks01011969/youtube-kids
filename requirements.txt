@@ -1,6 +1,3 @@
-# Core HTTP + API
-requests
-
 # OpenAI / Groq-compatible client
 openai
 
@@ -12,3 +9,16 @@ google-auth-httplib2
 
 # Utilities
 python-dotenv
+
+# Kaggle notebook image generation
+kaggle==2.2.2
+kagglesdk==0.1.30
+
+# Local narration
+piper-tts
+
+# Local image-to-video generation
+pillow
+imageio
+imageio-ffmpeg
+numpy

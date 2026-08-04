@@ -1,0 +1,10 @@
+{
+  "prompt": "A single high-quality cinematic image of a tiny anthropomorphic broccoli gardener holding a glowing seed in a cozy miniature garden. The character wears denim overalls and a small straw hat, standing on a moss path beside oversized dewdrops and flower pots. Warm golden morning sunlight, shallow depth of field, whimsical realism, rich textures, expressive face, clean composition, ultra detailed, professional illustration quality.",
+  "negative_prompt": "multiple panels, comic panels, speech bubbles, captions, readable text, watermark, logo, signature, blurry, low quality, distorted anatomy, extra limbs, malformed hands, cropped subject, cluttered composition, harsh shadows, dull colors",
+  "width": 1024,
+  "height": 1024,
+  "num_inference_steps": 4,
+  "guidance_scale": 0.0,
+  "max_sequence_length": 256,
+  "gguf_quant": "Q3_K_S"
+}

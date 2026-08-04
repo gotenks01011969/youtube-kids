@@ -10,6 +10,7 @@ CORE REQUIREMENTS (NON-NEGOTIABLE)
 • Total video length: 50–60 seconds
 • Predictable and repeatable structure
 • No challenges, quizzes, scoring, or testing
+• Must work as a sequence of simple static images with spoken narration
 
 AGE-APPROPRIATENESS (CRITICAL)
 
@@ -17,6 +18,16 @@ AGE-APPROPRIATENESS (CRITICAL)
 • Use only simple, familiar, everyday objects
 • Focus on concrete, visible concepts only
 • The idea must follow a simple, repeatable pattern
+
+IMAGE SIMPLICITY REQUIREMENTS
+
+• Each scene should need only ONE main object on screen
+• A final summary scene may show up to THREE very simple objects
+• Avoid scenes that require text, letters, numbers, signs, labels, tiny details, exact facial expressions, complex backgrounds, or multiple actions
+• Avoid motion-dependent ideas like rolling, spinning, flying, growing, opening, changing, hiding, or transforming
+• Prefer ideas where the narrator can say the same simple sentence pattern for each object
+• Good pattern: "Red apple. Red apple is red."
+• Bad pattern: "The apple rolls past the clock while the sun rises."
 
 OUTPUT RULES (STRICT)
 

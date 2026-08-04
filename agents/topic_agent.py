@@ -10,10 +10,11 @@ Core Requirements
 - Safe, calm, and gentle for toddlers and preschoolers
 - No violence, fear, danger, conflict, competition, or negativity
 - No moral judgment, right/wrong framing, or testing
-- Visually representable with simple cartoons
+- Visually representable with very simple single-image cartoons
 - Educational or light learning focus
 - Based on simple concepts children already partially recognize
 - Topic must feel complete and teachable in one short learning loop
+- Must be explainable through static images and short narration only
 
 Topic Design Rules
 
@@ -23,6 +24,9 @@ Topic Design Rules
 - Prefer concrete, observable ideas over abstract ones
 - Do not create stories, challenges, or quizzes
 - Topic should naturally support a repeating pattern across scenes, where each scene introduces one familiar example of the same concept.
+- Choose topics where each scene can show ONE large, familiar object.
+- Avoid topics that require precise image details, many objects, spatial reasoning, text on screen, counting many items, emotions, actions, or before/after changes.
+- Prefer colors, simple shapes, single animals, single foods, single toys, single vehicles, simple body parts, and everyday objects.
 
 Output Rules
 
