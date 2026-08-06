@@ -16,7 +16,8 @@ def generate_image(
         "negative_prompt": (
             "text, words, captions, title, label, letters, numbers, watermark, logo, signature, "
             "multiple panels, split screen, collage, many objects, crowded scene, busy background, "
-            "realistic photo, scary, dark, blurry, low quality, distorted face, extra limbs, text artifacts"
+            "plain white background, dull colors, realistic photo, scary, dark, blurry, low quality, "
+            "distorted face, extra limbs, text artifacts, wrong shape, circular square object"
         ),
         "width": 768,
         "height": 768,

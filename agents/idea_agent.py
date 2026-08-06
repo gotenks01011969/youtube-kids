@@ -2,50 +2,50 @@ from utils.llm import call_llm
 from utils.memory import get_recent_formats
 
 SYSTEM_PROMPT = """
-Based on a given topic, create ONE extremely simple animated video "idea" for children aged 1–2.
-The idea must be suitable for a short YouTube Kids video made from simple static images and narration.
+Create ONE video idea for the given topic.
+This pipeline can only make static images, one image per scene, plus spoken narration.
+The idea must be simple enough for a text-to-image model to draw well.
 
-CORE REQUIREMENTS (NON-NEGOTIABLE)
+IDEA CONTRACT
+- Provide 3-5 learning examples when the topic naturally supports it.
+- Each learning example introduces ONE object.
+- Use the same sentence pattern across scenes.
+- Do not include a final recap scene with multiple objects.
+- Do not include an intro title card.
+- Do not include actions, movement, transformations, hiding, finding, counting, questions, quizzes, or stories.
+- The viewer is age 1-2, so use familiar objects and very simple words.
+- The final video will add fixed opening and closing scenes separately.
 
-• Use only as many scenes as the topic naturally needs
-• Prefer 2–4 object scenes
-• Do not add filler scenes just to reach a fixed duration
-• Predictable and repeatable structure
-• No challenges, quizzes, scoring, or testing
-• Must work as a sequence of simple static images with spoken narration
+WHAT THE IDEA STRING MUST INCLUDE
+- The exact object for each learning example.
+- The learning word repeated for each object, such as the color, shape, animal name, or object family.
+- A short note that every image is one large cute object on a bright colorful background.
 
-AGE-APPROPRIATENESS (CRITICAL)
+GOOD IDEA
+"A three-example color video. Example 1: one red apple. Example 2: one red strawberry. Example 3: one red balloon. The narration repeats: This is red. The images are cute, bright, and simple."
 
-• Designed specifically for ages 1–2
-• Use only simple, familiar, everyday objects
-• Focus on concrete, visible concepts only
-• The idea must follow a simple, repeatable pattern
+BAD IDEA
+"A red apple rolls past a strawberry and a fire truck, then all red things appear together."
 
-IMAGE SIMPLICITY REQUIREMENTS
+IMAGE-SAFE OBJECT RULES
+- Prefer objects with simple silhouettes.
+- Avoid objects that need tiny details, exact text, hands, faces of people, rooms, roads, or multiple parts.
+- For shape topics, every object must naturally match the target shape.
+- Square: use square block, square box, square tile, square pillow, square window, square cracker.
+- Circle: use ball, cookie, wheel, clock, sun, moon.
+- Triangle: use triangle block, triangle flag, triangle roof, triangle slice.
+- Do not use plate, ball, wheel, clock, cookie, moon, or sun for square.
 
-• Each scene should need only ONE main object on screen
-• Do not create a final combined image scene
-• Do not ask for multiple examples in one image
-• Avoid scenes that require text, letters, numbers, signs, labels, tiny details, exact facial expressions, complex backgrounds, or multiple actions
-• Avoid motion-dependent ideas like rolling, spinning, flying, growing, opening, changing, hiding, or transforming
-• Prefer ideas where the narrator can say the same simple sentence pattern for each object
-• Good pattern: "Red apple. Red apple is red."
-• Bad pattern: "The apple rolls past the clock while the sun rises."
-• Bad pattern: "Apple, strawberry, and fire truck appear together."
+OUTPUT RULES
+- Output VALID JSON only.
+- No markdown.
+- No explanations.
+- No extra keys.
 
-OUTPUT RULES (STRICT)
-
-• Output VALID JSON only
-• No markdown
-• No explanations
-• No extra text
-• Format exactly as:
-
+OUTPUT FORMAT
 {
   "idea": "string"
 }
-
-Only output the JSON object.
 """
 
 def generate_idea(topic_data: dict):

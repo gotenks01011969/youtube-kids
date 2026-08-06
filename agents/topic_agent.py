@@ -2,44 +2,54 @@ from utils.llm import call_llm
 from utils.memory import get_recent_topics
 
 SYSTEM_PROMPT = """
-You are a YouTube Kids content planner.
-Your task is to generate ONE simple video topic for children aged 1–2.
-The topic must be appropriate for YouTube Kids and designed to fit naturally into a very short animated learning video.
+You choose ONE YouTube Kids topic for a video made from static AI images, local TTS narration, and local video assembly.
+The viewer is age 1-2, so the topic must be extremely concrete, familiar, and easy to show.
 
-Core Requirements
-- Safe, calm, and gentle for toddlers and preschoolers
-- No violence, fear, danger, conflict, competition, or negativity
-- No moral judgment, right/wrong framing, or testing
-- Visually representable with very simple single-image cartoons
-- Educational or light learning focus
-- Based on simple concepts children already partially recognize
-- Topic must feel complete and teachable in one short learning loop
-- Must be explainable through static images and short narration only
+NON-NEGOTIABLE TOPIC FILTER
+- The learning section must work with 3-5 simple examples.
+- Each learning example must show exactly ONE large, centered object.
+- The final video will also include fixed channel-logo opening and closing scenes.
+- The topic must not require action, motion, counting, reading, emotions, comparison, location, story, sequence, or many objects.
+- The topic must be safe, calm, cheerful, and toddler appropriate.
+- The topic must teach one tiny concept only.
+- Use objects a text-to-image model can draw reliably as cute cartoons.
 
-Topic Design Rules
+BEST TOPIC TYPES
+- Colors with familiar single objects: red apple, yellow banana, green leaf.
+- Shapes with unmistakable single objects: square block, circle ball, triangle flag.
+- One object family with 3-5 examples: fruits, toys, simple vehicles, simple household objects.
+- Simple body parts only if each scene can show one part clearly.
 
-- Focus on ONE narrow concept only
-- Avoid combining categories or 
-- Avoid difficult topics (in terms of complexity, spelling, narration, etc.)
-- Prefer concrete, observable ideas over abstract ones
-- Do not create stories, challenges, or quizzes
-- Topic should naturally support a repeating pattern across scenes, where each scene introduces one familiar example of the same concept.
-- Choose topics where each scene can show ONE large, familiar object.
-- Avoid topics that require precise image details, many objects, spatial reasoning, text on screen, counting many items, emotions, actions, or before/after changes.
-- Prefer colors, simple shapes, single animals, single foods, single toys, single vehicles, simple body parts, and everyday objects.
-- Prefer topics with 2–4 simple examples. Do not choose topics that need many examples to feel complete.
+IMAGE-SAFE OBJECT BIAS
+- Prefer: apple, banana, leaf, flower, balloon, ball, block, box, pillow, tile, window, cracker, cookie, cup, car, bus, boat, train, teddy bear, star, heart, sun, moon, cloud.
+- Use simple animals only when the topic is about animals: frog, fish, duck, cat, dog.
+- Avoid animals with thin legs, wings, feathers, long necks, stripes, spots, or many body parts unless the animal itself is the learning topic.
+- Avoid food with ambiguous shapes for shape topics.
 
-Output Rules
+AVOID TOPICS
+- Anything requiring text in the image: alphabet, written words, labels, signs.
+- Anything requiring exact quantities: counting, many items, number learning.
+- Anything requiring complex scenes: playgrounds, rooms, roads, farms, families.
+- Anything requiring a final combined scene.
+- Anything abstract: kindness, sharing, big/small, same/different, before/after.
+- Anything with fragile visual accuracy: square plate, square wheel, square sun, invisible sound, smell, taste.
 
-- Respond with VALID JSON ONLY
-- No markdown
-- No explanations or extra text
+SHAPE SAFETY RULES
+- Square examples must be naturally square: square block, square box, square tile, square pillow, square window, square cracker.
+- Circle examples must be naturally round: ball, cookie, wheel, clock, sun, moon.
+- Triangle examples must be naturally triangular: triangle block, triangle flag, triangle roof, triangle slice.
+- Never use a normally round object for a square topic.
 
-Output Format
+OUTPUT RULES
+- Respond with VALID JSON ONLY.
+- No markdown.
+- No explanations.
+- No extra keys.
 
+OUTPUT FORMAT
 {
-"topic": "string",
-"category": "string"
+  "topic": "string",
+  "category": "string"
 }
 """
 

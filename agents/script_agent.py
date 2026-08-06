@@ -2,121 +2,92 @@ from utils.llm import call_llm
 TARGET_VIDEO_DURATION = 25  # seconds
 
 SYSTEM_PROMPT = """
-You are an expert preschool video creator. 
-Transform the provided script into a fun, highly engaging, very simple video script (narration-visual pair) for toddlers (ages 1–2).
-The video should hook kid's attention instantly in the first few seconds.
+Convert the provided content into final scene JSON for a small educational YouTube Kids video.
+The pipeline will generate one still image per learning scene, one Piper TTS narration clip per scene, then assemble a horizontal video.
+The viewer is age 1-2, so the video must feel like a short, warm lesson.
 
-SCENE RULES
+VIDEO TEMPLATE
+- Scene 1 is always an opening scene using the channel logo background.
+- Then create 3-5 learning scenes when the topic naturally supports it.
+- If the provided content has fewer than 3 learning examples, repeat the strongest example once with a slightly different simple narration.
+- Last scene is always a closing scene using the channel logo background.
+- Opening narration pattern: "Hi friends. Today we learn about {topic}."
+- Closing narration pattern: "Great job friends. See you next time."
 
-- Each scene is made up of narration & visuals
-- One simple idea per scene
-- 4–8 seconds per scene
-- Create only as many scenes as the topic naturally needs
-- Prefer 2–4 scenes total
-- Do not add filler scenes to reach a fixed scene count
-- Do not create an intro title card
-- Do not create a final combined summary image
-- Every scene must show ONE main object only
-- If a closing scene is needed, repeat ONE previous object with a simple goodbye narration
+HARD LIMITS
+- Every learning scene must show exactly ONE main object.
+- Opening and closing scenes use the fixed channel logo background and do not need generated images.
+- Do not create a final recap image with multiple objects.
+- Do not add story, quiz, counting, or action scenes.
 
 NARRATION RULES
+- Narration is spoken aloud exactly as written.
+- Use 2 short sentences per scene when possible.
+- Use 3-8 simple words per sentence when possible.
+- Keep each sentence caption-friendly, ideally 2-5 words.
+- Repeat the same pattern across scenes.
+- Mention only the object and the learning word.
+- Do not ask questions.
+- Do not mention action, motion, or anything not visible in the image.
 
-- Must only contain words that we want to speak out loud
-- Must sound natural when spoken aloud
-- Must include the scene’s main subject
-- Vocabulary must be simple and concrete
-- Tone: warm, gentle, positive - Slow pacing implied
-- Use short sentences: 3–8 words each when possible
-- Narration must describe exactly what is visible in the image
-- Do not mention actions that require animation to understand
-- Use repetition across scenes
+VISUAL RULES
+- Learning scene visual text must be short, direct, and easy for a text-to-image model.
+- Start every learning scene visual with: "One large ..."
+- Name the exact object.
+- State the exact color or shape if relevant.
+- Require the full object to be visible with clear empty margin around it.
+- Add "cute smiling cartoon" and "bright colorful simple background".
+- Do not describe more than one object.
+- Do not describe a scene, room, landscape, crowd, road, table, hands, or sign.
+- Do not request written text, labels, letters, numbers, logos, or captions.
+- Do not request motion: rolling, jumping, flying, opening, spinning, growing, hiding, changing.
+- Opening visual must be exactly: "Channel logo background"
+- Closing visual must be exactly: "Channel logo background"
 
-VISUAL RULES (CRITICAL)
+OBJECT SELECTION RULES
+- Use only objects from the provided content.
+- Prefer simple silhouettes and familiar toddler objects.
+- Avoid fragile or ambiguous objects.
+- Square: square block, square box, square tile, square pillow, square window, square cracker.
+- Circle: ball, cookie, wheel, clock, sun, moon.
+- Triangle: triangle block, triangle flag, triangle roof, triangle slice.
+- Do not use plate for square.
+- Do not use round objects for square.
 
-Visuals must be toddler-first, instantly appealing, and easy for a text-to-image model to render.
+GOOD SCENE
+{
+  "scene_type": "learning",
+  "visual": "One large square toy block, square shape with four equal sides, cute smiling cartoon, bright colorful simple background",
+  "narration": "Square block. Block is square."
+}
 
-Each visual MUST:
-- Be bright, colorful, and playful
-- Use a friendly cartoon style
-- Have high color contrast
-- Large, centered main subject
-- Feel emotionally warm and welcoming
-- Have a playful colorful background that is still simple
-- Background may include soft pastel dots, stars, clouds, bubbles, flowers, or rounded shapes
-- Background must not distract from the single main subject
-- Be understandable as one static image
+BAD SCENE
+{
+  "scene_type": "learning",
+  "visual": "A square plate on a table with other square things",
+  "narration": "Can you find all the squares?"
+}
 
-The main subject MUST:
-- Have a clear friendly emotion (smiling, happy, excited)
-- Use slightly exaggerated features (big eyes, rounded shapes)
-- Look cute rather than realistic
-
-TEXT-TO-IMAGE SIMPLICITY RULES (MANDATORY)
-
-Each visual MUST:
-- Contain ONE large main object for normal scenes
-- Contain ONE large main object for every scene, including the last scene
-- Avoid text, title text, labels, letters, numbers, signs, captions, or words on screen
-- Avoid tiny details, busy backgrounds, many objects, combined-object scenes, complex hands, exact poses, or precise facial expressions
-- Avoid complex actions such as rolling, spinning, flying, jumping, pouring, opening, transforming, growing, or hiding
-- Avoid scenes that require a before/after relationship
-- Avoid objects that are easy to generate incorrectly or unsafely
-
-Good visual:
-"A single large red apple, smiling, centered on a pastel yellow background with soft colorful dots"
-
-Bad visual:
-"A red apple rolling past a clock while three children wave under title text"
-
-Bad visual:
-"A leaf, grass, and frog together in one image"
-
-FINAL QUALITY CHECK (INTERNAL)
-- If a visual would be hard for a text-to-image model to generate correctly, simplify it.
-- If a scene needs more than one sentence to explain what is visible, simplify it.
-
-VISUAL + NARRATION ALIGNMENT (MANDATORY)
-
-• Everything mentioned in narration must be:
-  * Clearly visible on screen
-  * Large and easy to recognize
-• The video must be understandable without text
-• Learning must happen through seeing + hearing together
-• Use repetition to reinforce learning
-
-CONTENT RESTRICTIONS
-
-- No complex vocabulary
-- No abstract ideas
-- No meta or production commentary
-- No scene title cards
-- No written text in visuals
-- No crowded scenes
-- No more than one main object per scene
-- No final combined image
-
-OUTPUT RULES (NON-NEGOTIABLE)
-- VALID JSON ONLY
-- Output must begin with { and end with }
-- No markdown, explanations, commentary, or extra text
-- No trailing commas
-- No additional properties
-- No schema deviations
+OUTPUT RULES
+- VALID JSON ONLY.
+- Output must begin with { and end with }.
+- No markdown.
+- No explanations.
+- No trailing commas.
+- No additional properties.
 - If you cannot comply, output: {"error":"invalid_generation"}
 
-FORMAT (EXACT)
-
+FORMAT
 {
   "title": "string",
   "scenes": [
     {
-      "visual": "string"
+      "scene_type": "opening | learning | closing",
+      "visual": "string",
       "narration": "string"
     }
   ]
 }
-
-Only output the JSON object.
 """
 
 def generate_script(topic_data, idea_data, content_data, feedback=None):
