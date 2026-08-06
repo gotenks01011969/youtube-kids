@@ -1,17 +1,16 @@
+import os
 from datetime import datetime
 
-github_access_token = "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"
-YOUTUBE_CLIENT_ID = "18489446057-5kngc92okd7a85g1nnuc3n2kpc2prn1p.apps.googleusercontent.com"
-YOUTUBE_CLIENT_SECRET = "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"
-YOUTUBE_REFRESH_TOKEN = "1//0g-QyJqpaFzfUCgYIARAAGBASNwF-L9IrFiBB6lC3LwsJbbPABTLP2Yjadpli_xRzyH-5ue4E5EACEdaGaODJ-VqF4UVTdG4XL5I"
 
-groqcloud_keys = ["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",
-               "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",
-               "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",
-               "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",
-               "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",
-               "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",
-               "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"]
+YOUTUBE_CLIENT_ID = os.getenv("YOUTUBE_CLIENT_ID", "")
+YOUTUBE_CLIENT_SECRET = os.getenv("YOUTUBE_CLIENT_SECRET", "")
+YOUTUBE_REFRESH_TOKEN = os.getenv("YOUTUBE_REFRESH_TOKEN", "")
+
+groqcloud_keys = [
+    key.strip()
+    for key in os.getenv("GROQCLOUD_KEYS", os.getenv("GROQCLOUD_API_KEY", "")).split(",")
+    if key.strip()
+]
 
 def get_current_day():
     # Get the current day of the week (0 = Monday, 6 = Sunday)
@@ -20,4 +19,6 @@ def get_current_day():
     return current_day_index
 
 def get_groqcloud_key():
-    return groqcloud_keys[get_current_day()]
+    if not groqcloud_keys:
+        raise RuntimeError("Set GROQCLOUD_API_KEY or GROQCLOUD_KEYS.")
+    return groqcloud_keys[get_current_day() % len(groqcloud_keys)]

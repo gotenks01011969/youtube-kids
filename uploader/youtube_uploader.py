@@ -18,10 +18,24 @@ def retry_upload(fn, retries=3, base_delay=10):
             time.sleep(delay)
 
 
-def upload_to_youtube(video_path: str, title: str, metadata: dict, privacy_status="private"):
+def upload_to_youtube(video_path: str, title: str, metadata: dict, privacy_status="public"):
     
     description = metadata["description"]
     tags = metadata["tags"]
+    missing_credentials = [
+        name
+        for name, value in {
+            "YOUTUBE_CLIENT_ID": YOUTUBE_CLIENT_ID,
+            "YOUTUBE_CLIENT_SECRET": YOUTUBE_CLIENT_SECRET,
+            "YOUTUBE_REFRESH_TOKEN": YOUTUBE_REFRESH_TOKEN,
+        }.items()
+        if not value
+    ]
+    if missing_credentials:
+        raise RuntimeError(
+            "Missing YouTube credential environment variables: "
+            + ", ".join(missing_credentials)
+        )
 
     creds = Credentials(
         None,

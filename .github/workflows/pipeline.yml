@@ -1,40 +1,91 @@
-name: Daily Baby Steps Learning Pipeline
+name: YouTube Kids Pipeline
 
 on:
   schedule:
-    # Runs every day at 03:30 UTC (adjust if needed)
+    # Runs twice daily. Times are UTC.
     - cron: "30 3 * * *"
+    - cron: "30 15 * * *"
 
-  # Allows manual trigger from GitHub UI
   workflow_dispatch:
+
+concurrency:
+  group: youtube-kids-pipeline
+  cancel-in-progress: false
 
 jobs:
   run-pipeline:
     runs-on: ubuntu-latest
     permissions:
-      contents: write   # ✅ allow committing back to the repo
+      contents: write
 
-    timeout-minutes: 60
+    timeout-minutes: 180
+
+    env:
+      GROQCLOUD_API_KEY: ${{ secrets.GROQCLOUD_API_KEY }}
+      GROQCLOUD_KEYS: ${{ secrets.GROQCLOUD_KEYS }}
+      YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+      YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+      YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+      KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+      KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+      HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      PIPER_EXECUTABLE: piper
+      PIPER_MODEL_PATH: voices/en_US-amy-medium.onnx
+      PIPER_LENGTH_SCALE: "1.55"
+      CAPTIONS_ENABLED: "1"
 
     steps:
-      - name: 📦 Checkout repository
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: 🐍 Set up Python
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.13.5"
+          python-version: "3.12"
+          cache: pip
 
-      - name: 📚 Install dependencies
+      - name: Validate required secrets
+        run: |
+          python - <<'PY'
+          import os
+          required = [
+              "YOUTUBE_CLIENT_ID",
+              "YOUTUBE_CLIENT_SECRET",
+              "YOUTUBE_REFRESH_TOKEN",
+              "KAGGLE_USERNAME",
+              "KAGGLE_KEY",
+              "HF_TOKEN",
+          ]
+          missing = [name for name in required if not os.getenv(name)]
+          if not (os.getenv("GROQCLOUD_API_KEY") or os.getenv("GROQCLOUD_KEYS")):
+              missing.append("GROQCLOUD_API_KEY or GROQCLOUD_KEYS")
+          if missing:
+              raise SystemExit("Missing GitHub Secrets: " + ", ".join(missing))
+          print("Required secrets are present.")
+          PY
+
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: 🚀 Run daily video pipeline
+      - name: Restore Piper Amy voice
+        run: |
+          mkdir -p voices
+          if [ ! -f voices/en_US-amy-medium.onnx ]; then
+            curl -L -o voices/en_US-amy-medium.onnx \
+              "https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/amy/medium/en_US-amy-medium.onnx"
+          fi
+          if [ ! -f voices/en_US-amy-medium.onnx.json ]; then
+            curl -L -o voices/en_US-amy-medium.onnx.json \
+              "https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/amy/medium/en_US-amy-medium.onnx.json"
+          fi
+
+      - name: Run full video pipeline
         run: |
           python run_pipeline.py
 
-      - name: Commit updated topics
+      - name: Commit updated memory
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
@@ -43,12 +94,14 @@ jobs:
           git diff --cached --quiet || git commit -m "Update used topics & formats"
           git push
 
-
-      - name: 📁 Upload logs on failure
+      - name: Upload failure artifacts
         if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: pipeline-logs
+          if-no-files-found: ignore
           path: |
             *.log
             logs/
+            generated/
+            .kaggle_runs/

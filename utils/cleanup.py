@@ -71,6 +71,9 @@ def cleanup_run_artifacts(video_path=None):
     This is intentionally scoped to generated/transient artifacts.
     """
     stage_roots = [".kaggle_runs"]
+    generated_runs = Path("generated/runs")
+    if generated_runs.exists():
+        stage_roots.extend(generated_runs.glob("*/kaggle_runs"))
 
     paths = [
         "generated/runs",

@@ -13,67 +13,69 @@ from utils.cleanup import cleanup_run_artifacts
 
 def run_pipeline():
     logger.info("🚀 Starting automated YouTube Kids pipeline")
+    video_path = None
 
-    topic = retry_with_feedback(
-        generate_topic,
-        name="Topic Agent"
-    )
-    print("----------------------------------------------------------")
-    print("topic: ", topic)
-    print("----------------------------------------------------------")
+    try:
+        topic = retry_with_feedback(
+            generate_topic,
+            name="Topic Agent"
+        )
+        print("----------------------------------------------------------")
+        print("topic: ", topic)
+        print("----------------------------------------------------------")
 
-    idea = retry_with_feedback(
-        lambda: generate_idea(topic),
-        name="Idea Agent"
-    )
-    print("----------------------------------------------------------")
-    print("idea: ", idea)
-    print("----------------------------------------------------------")
+        idea = retry_with_feedback(
+            lambda: generate_idea(topic),
+            name="Idea Agent"
+        )
+        print("----------------------------------------------------------")
+        print("idea: ", idea)
+        print("----------------------------------------------------------")
 
-    content = retry_with_feedback(
-        lambda: generate_content(topic, idea),
-        name="Content Agent"
-    )
-    print("----------------------------------------------------------")
-    print("content: ", content)
-    print("----------------------------------------------------------")
+        content = retry_with_feedback(
+            lambda: generate_content(topic, idea),
+            name="Content Agent"
+        )
+        print("----------------------------------------------------------")
+        print("content: ", content)
+        print("----------------------------------------------------------")
 
-    def script_step():
-        script = generate_script(topic, idea, content)
-        return script
+        def script_step():
+            script = generate_script(topic, idea, content)
+            return script
 
-    script = retry_with_feedback(
-        script_step,
-        max_retries=4,
-        name="Script Agent"
-    )
-    print("----------------------------------------------------------")
-    print("script: ", script)
-    print("----------------------------------------------------------") 
+        script = retry_with_feedback(
+            script_step,
+            max_retries=4,
+            name="Script Agent"
+        )
+        print("----------------------------------------------------------")
+        print("script: ", script)
+        print("----------------------------------------------------------")
 
-    video_path = retry_with_feedback(
-        lambda: generate_video(script),
-        max_retries=2,
-        name="Video Generation"
-    )
-    print("----------------------------------------------------------")
-    print("video: ", video_path)
-    print("----------------------------------------------------------")
+        video_path = retry_with_feedback(
+            lambda: generate_video(script),
+            max_retries=2,
+            name="Video Generation"
+        )
+        print("----------------------------------------------------------")
+        print("video: ", video_path)
+        print("----------------------------------------------------------")
 
-    metadata = retry_with_feedback(
-        lambda: generate_metadata(script),
-        name="Youtube Agent"
-    )
-    print("----------------------------------------------------------")
-    print("metadata: ", metadata)
-    upload_to_youtube(video_path, topic["topic"], metadata)
-    print("Uploaded to Youtube")
-    print("----------------------------------------------------------")
-    
-    record_video(topic["topic"], idea["idea"])
-    cleanup_run_artifacts(video_path)
-    print("----------------------------------------------------------")
-    print("Cleanup Done")
-    print("----------------------------------------------------------")
+        metadata = retry_with_feedback(
+            lambda: generate_metadata(script),
+            name="Youtube Agent"
+        )
+        print("----------------------------------------------------------")
+        print("metadata: ", metadata)
+        upload_to_youtube(video_path, topic["topic"], metadata)
+        print("Uploaded to Youtube")
+        print("----------------------------------------------------------")
 
-    logger.info("✅ Pipeline completed successfully")
+        record_video(topic["topic"], idea["idea"])
+        logger.info("✅ Pipeline completed successfully")
+    finally:
+        cleanup_run_artifacts(video_path)
+        print("----------------------------------------------------------")
+        print("Cleanup Done")
+        print("----------------------------------------------------------")
