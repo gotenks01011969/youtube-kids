@@ -54,6 +54,8 @@ gh secret set KAGGLE_KEY --body "YOUR_KAGGLE_KEY"
 gh secret set HF_TOKEN --body "YOUR_HUGGING_FACE_TOKEN"
 ```
 
+`KAGGLE_KEY` should be the Kaggle API token value. The workflow maps it to `KAGGLE_API_TOKEN` for the Kaggle CLI.
+
 Then trigger a test run:
 
 ```bash

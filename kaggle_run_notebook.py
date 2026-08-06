@@ -34,7 +34,13 @@ class KaggleRunError(RuntimeError):
     pass
 
 
+def normalize_kaggle_auth_env() -> None:
+    if not os.environ.get("KAGGLE_API_TOKEN") and os.environ.get("KAGGLE_KEY"):
+        os.environ["KAGGLE_API_TOKEN"] = os.environ["KAGGLE_KEY"]
+
+
 def run_command(args: list[str], cwd: Path | None = None) -> subprocess.CompletedProcess[str]:
+    normalize_kaggle_auth_env()
     print(f"+ {' '.join(args)}")
     try:
         return subprocess.run(

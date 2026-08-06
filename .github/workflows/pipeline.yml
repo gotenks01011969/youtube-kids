@@ -28,6 +28,7 @@ jobs:
       YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
       KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
       KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+      KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_KEY }}
       HF_TOKEN: ${{ secrets.HF_TOKEN }}
       PIPER_EXECUTABLE: piper
       PIPER_MODEL_PATH: voices/en_US-amy-medium.onnx
