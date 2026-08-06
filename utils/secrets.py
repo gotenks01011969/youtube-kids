@@ -6,9 +6,11 @@ YOUTUBE_CLIENT_ID = os.getenv("YOUTUBE_CLIENT_ID", "")
 YOUTUBE_CLIENT_SECRET = os.getenv("YOUTUBE_CLIENT_SECRET", "")
 YOUTUBE_REFRESH_TOKEN = os.getenv("YOUTUBE_REFRESH_TOKEN", "")
 
+groqcloud_key_source = os.getenv("GROQCLOUD_KEYS") or os.getenv("GROQCLOUD_API_KEY", "")
+
 groqcloud_keys = [
     key.strip()
-    for key in os.getenv("GROQCLOUD_KEYS", os.getenv("GROQCLOUD_API_KEY", "")).split(",")
+    for key in groqcloud_key_source.split(",")
     if key.strip()
 ]
 
