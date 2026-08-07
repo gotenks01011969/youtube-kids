@@ -46,7 +46,9 @@ VISUAL RULES
 
 OBJECT SELECTION RULES
 - Use only objects from the provided content.
-- Prefer simple silhouettes and familiar toddler objects.
+- Prefer realistic, familiar toddler objects from daily life.
+- Prefer simple real objects over decorative symbols when the topic is colors, foods, toys, vehicles, animals, or household objects.
+- Use heart and star mainly for shape topics.
 - Avoid fragile or ambiguous objects.
 - Square: square block, square box, square tile, square pillow, square window, square cracker.
 - Circle: ball, cookie, wheel, clock, sun, moon.

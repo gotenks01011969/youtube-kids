@@ -32,7 +32,7 @@ jobs:
       HF_TOKEN: ${{ secrets.HF_TOKEN }}
       PIPER_EXECUTABLE: piper
       PIPER_MODEL_PATH: voices/en_US-amy-medium.onnx
-      PIPER_LENGTH_SCALE: "1.55"
+      PIPER_LENGTH_SCALE: "1.35"
       CAPTIONS_ENABLED: "1"
 
     steps:

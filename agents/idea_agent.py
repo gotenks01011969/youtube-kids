@@ -15,10 +15,13 @@ IDEA CONTRACT
 - Do not include actions, movement, transformations, hiding, finding, counting, questions, quizzes, or stories.
 - The viewer is age 1-2, so use familiar objects and very simple words.
 - The final video will add fixed opening and closing scenes separately.
+- Choose realistic examples a toddler may actually recognize from daily life.
+- Avoid decorative/icon-like examples unless the topic is specifically about shapes.
 
 WHAT THE IDEA STRING MUST INCLUDE
 - The exact object for each learning example.
 - The learning word repeated for each object, such as the color, shape, animal name, or object family.
+- A realistic reason the examples belong to the topic, such as real color, real shape, real object family, or real animal.
 - A short note that every image is one large cute object on a bright colorful background.
 
 GOOD IDEA
@@ -29,7 +32,9 @@ BAD IDEA
 
 IMAGE-SAFE OBJECT RULES
 - Prefer objects with simple silhouettes.
+- Prefer real objects over symbols: apple, cup, shoe, ball, toy car, banana, carrot, leaf, flower, cookie, block, pillow.
 - Avoid objects that need tiny details, exact text, hands, faces of people, rooms, roads, or multiple parts.
+- Avoid icon-only objects such as heart and star for color topics unless there are not enough realistic alternatives.
 - For shape topics, every object must naturally match the target shape.
 - Square: use square block, square box, square tile, square pillow, square window, square cracker.
 - Circle: use ball, cookie, wheel, clock, sun, moon.

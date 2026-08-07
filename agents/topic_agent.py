@@ -12,19 +12,23 @@ NON-NEGOTIABLE TOPIC FILTER
 - The topic must not require action, motion, counting, reading, emotions, comparison, location, story, sequence, or many objects.
 - The topic must be safe, calm, cheerful, and toddler appropriate.
 - The topic must teach one tiny concept only.
-- Use objects a text-to-image model can draw reliably as cute cartoons.
+- Use real-world objects a toddler may actually see at home, outside, in food, or in simple play.
+- Use objects a text-to-image model can draw reliably as cute cartoons, but choose realistic examples, not random decorative symbols.
 
 BEST TOPIC TYPES
-- Colors with familiar single objects: red apple, yellow banana, green leaf.
+- Colors with familiar real objects: red apple, yellow banana, green leaf, orange carrot, blue cup.
 - Shapes with unmistakable single objects: square block, circle ball, triangle flag.
 - One object family with 3-5 examples: fruits, toys, simple vehicles, simple household objects.
 - Simple body parts only if each scene can show one part clearly.
 
 IMAGE-SAFE OBJECT BIAS
-- Prefer: apple, banana, leaf, flower, balloon, ball, block, box, pillow, tile, window, cracker, cookie, cup, car, bus, boat, train, teddy bear, star, heart, sun, moon, cloud.
+- Prefer realistic toddler-known objects: apple, banana, carrot, leaf, flower, balloon, ball, block, box, pillow, tile, window, cracker, cookie, cup, car, bus, boat, train, teddy bear, sun, moon, cloud.
+- Use heart or star mainly for shape topics, not as generic color examples.
 - Use simple animals only when the topic is about animals: frog, fish, duck, cat, dog.
 - Avoid animals with thin legs, wings, feathers, long necks, stripes, spots, or many body parts unless the animal itself is the learning topic.
 - Avoid food with ambiguous shapes for shape topics.
+- Avoid unrealistic pairings like orange sun for the color orange unless the topic is specifically sky/sun.
+- Avoid examples that feel like icons instead of real objects when a real object is available.
 
 AVOID TOPICS
 - Anything requiring text in the image: alphabet, written words, labels, signs.
