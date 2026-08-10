@@ -19,6 +19,7 @@ SMOKE_MESSAGE = "kaggle automation smoke test ok"
 SMOKE_CHECKSUM = hashlib.sha256(SMOKE_MESSAGE.encode("utf-8")).hexdigest()
 DEFAULT_POLL_SECONDS = 30
 DEFAULT_TIMEOUT_SECONDS = 60 * 45
+MAX_KERNEL_SLUG_LENGTH = 45
 TRANSIENT_ERROR_PATTERNS = (
     "ConnectTimeout",
     "Connection to api.kaggle.com timed out",
@@ -119,7 +120,7 @@ def read_kaggle_username() -> str:
 def slugify(value: str) -> str:
     slug = "".join(char.lower() if char.isalnum() else "-" for char in value)
     slug = "-".join(part for part in slug.split("-") if part)
-    return slug[:45].strip("-") or "notebook-run"
+    return slug[:MAX_KERNEL_SLUG_LENGTH].strip("-") or "notebook-run"
 
 
 def make_kernel_slug(notebook_path: Path, suffix: str | None) -> str:
@@ -372,7 +373,7 @@ def main() -> int:
             print(f"Resuming kernel: {kernel_id}")
         else:
             owner = args.owner.strip() or read_kaggle_username()
-            slug = args.slug.strip() or make_kernel_slug(notebook_path, suffix=None)
+            slug = slugify(args.slug.strip()) if args.slug.strip() else make_kernel_slug(notebook_path, suffix=None)
             title = args.title.strip() or slug
             stage_dir = args.stage_root / slug
             output_dir = args.output_dir / slug

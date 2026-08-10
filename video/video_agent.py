@@ -20,6 +20,7 @@ RUNS_DIR = Path("generated/runs")
 VIDEO_WIDTH = 1920
 VIDEO_HEIGHT = 1080
 FPS = 24
+MAX_KAGGLE_SLUG_LENGTH = 45
 SCENE_AUDIO_PADDING_SECONDS = 0.35
 CHANNEL_LOGO_BACKGROUND = Path(os.getenv("CHANNEL_LOGO_BACKGROUND", "channel/logo.png"))
 CONTENT_SAFE_WIDTH = int(VIDEO_WIDTH * 0.82)
@@ -122,8 +123,10 @@ def _image_slug(script: dict, run_id: str, scene_number: int) -> str:
         for character in title
     )
     safe_title = "-".join(part for part in safe_title.split("-") if part)
-    safe_title = safe_title[:48] or "youtube-kids-video"
-    return f"{safe_title}-{run_id}-scene-{scene_number:02d}"
+    suffix = f"{run_id}-scene-{scene_number:02d}"
+    max_title_length = MAX_KAGGLE_SLUG_LENGTH - len(suffix) - 1
+    safe_title = safe_title[:max_title_length].strip("-") or "video"
+    return f"{safe_title}-{suffix}"
 
 
 def _generate_image_with_kaggle(
