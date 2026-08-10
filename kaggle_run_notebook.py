@@ -21,6 +21,8 @@ DEFAULT_POLL_SECONDS = 30
 DEFAULT_TIMEOUT_SECONDS = 60 * 45
 MAX_KERNEL_SLUG_LENGTH = 45
 TRANSIENT_ERROR_PATTERNS = (
+    "Bad Request for url: https://api.kaggle.com/v1/kernels.KernelsApiService/GetKernelSessionStatus",
+    "Bad Request for url: https://api.kaggle.com/v1/kernels.KernelsApiService/SaveKernel",
     "ConnectTimeout",
     "Connection to api.kaggle.com timed out",
     "Max retries exceeded",
@@ -240,8 +242,8 @@ def push_kernel(stage_dir: Path) -> str | None:
     output = run_kaggle_command_with_retries(
         kaggle_args("kernels", "push", "-p", str(stage_dir)),
         "Kaggle kernel push",
-        attempts=3,
-        delay_seconds=15,
+        attempts=5,
+        delay_seconds=60,
     )
     print(output)
     match = re.search(r"https://www\.kaggle\.com/code/([^/\s]+)/([^/\s]+)", output)

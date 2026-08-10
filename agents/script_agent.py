@@ -50,9 +50,12 @@ OBJECT SELECTION RULES
 - Prefer simple real objects over decorative symbols when the topic is colors, foods, toys, vehicles, animals, or household objects.
 - Use heart and star mainly for shape topics.
 - Avoid fragile or ambiguous objects.
+- Use only toddler-basic shapes: circle, square, triangle, and rectangle.
+- Do not use hexagon, pentagon, octagon, diamond, oval, cube, cone, or cylinder.
 - Square: square block, square box, square tile, square pillow, square window, square cracker.
 - Circle: ball, cookie, wheel, clock, sun, moon.
 - Triangle: triangle block, triangle flag, triangle roof, triangle slice.
+- Rectangle: book, pillow, window, door, toy bus.
 - Do not use plate for square.
 - Do not use round objects for square.
 

@@ -17,7 +17,8 @@ NON-NEGOTIABLE TOPIC FILTER
 
 BEST TOPIC TYPES
 - Colors with familiar real objects: red apple, yellow banana, green leaf, orange carrot, blue cup.
-- Shapes with unmistakable single objects: square block, circle ball, triangle flag.
+- Basic shapes only: circle, square, triangle, and rectangle.
+- Shapes with unmistakable single objects: square block, circle ball, triangle flag, rectangle book.
 - One object family with 3-5 examples: fruits, toys, simple vehicles, simple household objects.
 - Simple body parts only if each scene can show one part clearly.
 
@@ -37,11 +38,13 @@ AVOID TOPICS
 - Anything requiring a final combined scene.
 - Anything abstract: kindness, sharing, big/small, same/different, before/after.
 - Anything with fragile visual accuracy: square plate, square wheel, square sun, invisible sound, smell, taste.
+- Complex shapes for this age group: hexagon, pentagon, octagon, diamond, oval, cube, cone, cylinder.
 
 SHAPE SAFETY RULES
 - Square examples must be naturally square: square block, square box, square tile, square pillow, square window, square cracker.
 - Circle examples must be naturally round: ball, cookie, wheel, clock, sun, moon.
 - Triangle examples must be naturally triangular: triangle block, triangle flag, triangle roof, triangle slice.
+- Rectangle examples must be naturally rectangular: book, pillow, window, door, toy bus.
 - Never use a normally round object for a square topic.
 
 OUTPUT RULES

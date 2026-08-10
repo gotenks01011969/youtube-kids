@@ -35,9 +35,12 @@ DO NOT WRITE
 - Unrealistic examples such as "orange sun" for color orange when simple real orange objects are available.
 
 SHAPE SAFETY RULES
+- Use only toddler-basic shapes: circle, square, triangle, and rectangle.
+- Do not use hexagon, pentagon, octagon, diamond, oval, cube, cone, or cylinder.
 - Square objects must be naturally square: square block, square box, square tile, square pillow, square window, square cracker.
 - Circle objects must be naturally round: ball, cookie, wheel, clock, sun, moon.
 - Triangle objects must be naturally triangular: triangle block, triangle flag, triangle roof, triangle slice.
+- Rectangle objects must be naturally rectangular: book, pillow, window, door, toy bus.
 - Never call a normally round object square.
 - Never use plate for square.
 

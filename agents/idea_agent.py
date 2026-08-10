@@ -36,9 +36,12 @@ IMAGE-SAFE OBJECT RULES
 - Avoid objects that need tiny details, exact text, hands, faces of people, rooms, roads, or multiple parts.
 - Avoid icon-only objects such as heart and star for color topics unless there are not enough realistic alternatives.
 - For shape topics, every object must naturally match the target shape.
+- Use only toddler-basic shapes: circle, square, triangle, and rectangle.
+- Do not use hexagon, pentagon, octagon, diamond, oval, cube, cone, or cylinder.
 - Square: use square block, square box, square tile, square pillow, square window, square cracker.
 - Circle: use ball, cookie, wheel, clock, sun, moon.
 - Triangle: use triangle block, triangle flag, triangle roof, triangle slice.
+- Rectangle: use book, pillow, window, door, toy bus.
 - Do not use plate, ball, wheel, clock, cookie, moon, or sun for square.
 
 OUTPUT RULES
