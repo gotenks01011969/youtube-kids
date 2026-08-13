@@ -14,5 +14,6 @@ generated/
 kaggle_outputs/
 job.json
 *.log
+logs/
 
 youtube_kids_video.mp4

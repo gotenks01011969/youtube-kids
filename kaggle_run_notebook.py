@@ -285,6 +285,41 @@ def download_output(kernel_id: str, output_dir: Path) -> None:
     print(output)
 
 
+def copy_failure_artifacts(output_dir: Path, slug: str) -> None:
+    if not output_dir.exists():
+        return
+
+    failure_dir = Path("logs") / "kaggle_failures" / slug
+    if failure_dir.exists():
+        shutil.rmtree(failure_dir)
+    failure_dir.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copytree(output_dir, failure_dir)
+    print(f"Copied Kaggle failure artifacts to: {failure_dir}")
+
+
+def print_failure_log_tail(output_dir: Path, lines: int = 120) -> None:
+    log_paths = sorted(output_dir.glob("*.log"))
+    if not log_paths:
+        return
+
+    for log_path in log_paths:
+        print(f"--- Last {lines} lines from {log_path} ---", file=sys.stderr)
+        content = log_path.read_text(encoding="utf-8", errors="replace").splitlines()
+        for line in content[-lines:]:
+            print(line, file=sys.stderr)
+
+
+def download_failure_output(kernel_id: str, output_dir: Path, slug: str) -> None:
+    try:
+        download_output(kernel_id, output_dir)
+    except Exception as download_error:
+        print(f"Could not download failed Kaggle output: {download_error}", file=sys.stderr)
+        return
+
+    copy_failure_artifacts(output_dir, slug)
+    print_failure_log_tail(output_dir)
+
+
 def validate_smoke_output(output_dir: Path) -> None:
     result_path = output_dir / "smoke_result.json"
     if not result_path.exists():
@@ -367,6 +402,10 @@ def main() -> int:
         print(f"Notebook does not exist: {notebook_path}", file=sys.stderr)
         return 2
 
+    kernel_id = ""
+    slug = ""
+    output_dir = Path("")
+
     try:
         if args.kernel_id.strip():
             kernel_id = args.kernel_id.strip()
@@ -408,6 +447,8 @@ def main() -> int:
         return 0
     except Exception as error:
         print(f"Run failed: {error}", file=sys.stderr)
+        if kernel_id and output_dir != Path(""):
+            download_failure_output(kernel_id, output_dir, slug)
         return 1
 
 
