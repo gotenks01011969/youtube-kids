@@ -1,5 +1,4 @@
 [
-  "The Color Orange: Orange, Carrot, Sun",
   "The Shape Star: Star, Star Cookie, Star Balloon",
   "The Color Pink: Pink Balloon, Pink Cupcake, Pink Flamingo",
   "The Color Brown: Cookie, Bread, Peanut",
@@ -18,5 +17,6 @@
   "The Shape Circle: Ball, Cookie, Wheel, Clock, Sun",
   "The Color Green: Leaf, Cucumber, Green Apple",
   "The Shape Square: Square Block, Square Tile, Square Box",
-  "The Shape Triangle"
+  "The Shape Triangle",
+  "The Color Black"
 ]
