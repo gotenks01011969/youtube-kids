@@ -1,5 +1,4 @@
 [
-  "The Vehicle Family: Car, Bus, Truck, Train, Boat",
   "The Shape Triangle",
   "The Shape Square",
   "The Color Black: Black Shoe, Black Crayon, Black Cookie",
@@ -18,5 +17,6 @@
   "The Color Yellow: Banana, Sunflower, Lemon, Corn",
   "The Color Red",
   "The Color Blue",
-  "The Shape Circle"
+  "The Shape Circle",
+  "The Shape Rectangle"
 ]
