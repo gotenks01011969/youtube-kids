@@ -2,15 +2,10 @@ name: YouTube Kids Pipeline
 
 on:
   schedule:
-    # Runs every 3 hours. Times are UTC.
+    # Runs every 8 hours. Times are UTC.
     - cron: "30 3 * * *"
-    - cron: "30 6 * * *"
-    - cron: "30 9 * * *"
-    - cron: "30 12 * * *"
-    - cron: "30 15 * * *"
-    - cron: "30 18 * * *"
-    - cron: "30 21 * * *"
-    - cron: "30 0 * * *"
+    - cron: "30 11 * * *"
+    - cron: "30 19 * * *"
 
   workflow_dispatch:
 
