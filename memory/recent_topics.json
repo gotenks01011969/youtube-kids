@@ -1,5 +1,4 @@
 [
-  "The Color Orange: Orange Carrot, Orange Orange, Orange Juice",
   "The Color Black: Black Cookie, Black Crayon, Black Shoe, Black Ball",
   "The Color Pink: Pink Ball, Pink Cup, Pink Flower, Pink Crayon",
   "The Color Brown: Brown Bread, Brown Tree, Brown Dog, Brown Bear, Brown Cup",
@@ -18,5 +17,6 @@
   "The Color Turquoise",
   "The Shape Rectangle",
   "The Shape Triangle",
-  "The Color Green"
+  "The Color Green",
+  "The Shape Square"
 ]
