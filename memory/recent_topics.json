@@ -1,5 +1,4 @@
 [
-  "The Simple Vehicle Family: Red Car, Blue Boat, Green Bus, Yellow Train, Purple Truck",
   "The Toy Doll Family",
   "The Simple Food Family",
   "The Simple Household Object Family",
@@ -18,5 +17,6 @@
   "The Shape Rectangle",
   "The Shape Square",
   "The Color Orange: Orange Carrot, Orange Tangerine, Orange Pumpkin, Orange Bell Pepper",
-  "The Color Pink"
+  "The Color Pink",
+  "The Simple Body Part Family: Hand, Foot, Eye, Ear, Nose"
 ]
