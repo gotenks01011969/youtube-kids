@@ -1,5 +1,4 @@
 [
-  "The Shape Square",
   "The Color Red",
   "The Simple Animal Family: Cat, Dog, Fish, Duck",
   "The Simple Household Object: Book",
@@ -18,5 +17,6 @@
   "The Color Green",
   "The Shape Triangle: Triangle Block, Triangle Flag, Triangle Slice of Pizza, Triangle Slice of Cake",
   "The Color Orange",
-  "The Shape Rectangle: Rectangle Book, Rectangle Pillow, Rectangle Window, Rectangle Bus"
+  "The Shape Rectangle: Rectangle Book, Rectangle Pillow, Rectangle Window, Rectangle Bus",
+  "The Simple Household Object: Blanket"
 ]
