@@ -1,5 +1,4 @@
 [
-  "The Simple Animal Family: Cat, Dog, Fish, Duck",
   "The Simple Household Object: Book",
   "The Color Brown: Brown Apple, Brown Cookie, Brown Ball",
   "The Simple Fruit Family",
@@ -18,5 +17,6 @@
   "The Color Orange",
   "The Shape Rectangle: Rectangle Book, Rectangle Pillow, Rectangle Window, Rectangle Bus",
   "The Simple Household Object: Blanket",
-  "The Color Blue"
+  "The Color Blue",
+  "The Color Red: Red Apple, Red Balloon, Red Crayon"
 ]
