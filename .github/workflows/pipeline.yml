@@ -70,6 +70,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Verify Kaggle CLI
+        run: |
+          python -c "import kaggle, six; print(f'Kaggle {kaggle.__version__}; six {six.__version__}')"
+          python -m kaggle --version
+
       - name: Restore Piper Amy voice
         run: |
           mkdir -p voices

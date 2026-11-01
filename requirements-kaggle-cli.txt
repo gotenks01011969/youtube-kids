@@ -1,2 +1,4 @@
 kaggle==2.2.2
 kagglesdk==0.1.30
+# Required by the Kaggle CLI at import time.
+six==1.17.0

@@ -13,6 +13,8 @@ python-dotenv
 # Kaggle notebook image generation
 kaggle==2.2.2
 kagglesdk==0.1.30
+# Kaggle 2.2.2 imports this at startup; keep it explicit for CI environments.
+six==1.17.0
 
 # Local narration
 piper-tts
