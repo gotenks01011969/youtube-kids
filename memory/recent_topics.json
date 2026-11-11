@@ -1,5 +1,4 @@
 [
-  "The Shape Rectangle: Rectangle Book, Rectangle Pillow, Rectangle Window, Rectangle Bus",
   "The Simple Household Object: Blanket",
   "The Color Blue",
   "The Color Red: Red Apple, Red Balloon, Red Crayon",
@@ -18,5 +17,6 @@
   "The Simple Household Object: Chair",
   "The Color Purple: Purple Grape, Purple Flower, Purple Crayon, Purple Balloon, Purple Cotton Candy",
   "The Color Green: Green Apple, Green Cucumber, Green Lettuce, Green Bell Pepper",
-  "The Simple Household Object: Bowl"
+  "The Simple Household Object: Bowl",
+  "The Simple Animal Family: Cat, Dog, Fish, Duck"
 ]
