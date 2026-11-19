@@ -1,5 +1,4 @@
 [
-  "The Simple Household Object: Spoon",
   "The Simple Household Object: Box",
   "The Simple Household Object: Cup",
   "The Simple Fruit Family: Apple, Banana, Orange, Strawberry, Grape",
@@ -18,5 +17,6 @@
   "The Color Orange: Orange Carrot, Orange Orange, Orange Pumpkin, Orange Tangerine",
   "The Color Red",
   "The Shape Square",
-  "The Color Pink: Pink Balloon, Pink Flower, Pink Teddy Bear"
+  "The Color Pink: Pink Balloon, Pink Flower, Pink Teddy Bear",
+  "The Color Orange: Orange Car, Orange Balloon, Orange Apple"
 ]
