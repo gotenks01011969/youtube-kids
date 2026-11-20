@@ -1,5 +1,4 @@
 [
-  "The Simple Household Object: Cup",
   "The Simple Fruit Family: Apple, Banana, Orange, Strawberry, Grape",
   "The Color Yellow: Yellow Lemon, Yellow Sunflower, Yellow Banana, Yellow Cup",
   "The Simple Household Object: Pillow",
@@ -18,5 +17,6 @@
   "The Shape Square",
   "The Color Pink: Pink Balloon, Pink Flower, Pink Teddy Bear",
   "The Color Orange: Orange Car, Orange Balloon, Orange Apple",
-  "The Color White: White Paper, White Balloon, White Cloud, White Cookie"
+  "The Color White: White Paper, White Balloon, White Cloud, White Cookie",
+  "The Simple Vehicle Family: Car, Bus, Train, Boat"
 ]
