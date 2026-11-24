@@ -1,5 +1,4 @@
 [
-  "The Color Yellow: Yellow Lemon, Yellow Sunflower, Yellow Banana, Yellow Cup",
   "The Simple Household Object: Pillow",
   "The Color Gray: Gray Ball, Gray Stone, Gray Cup, Gray Crayon, Gray Pillow",
   "The Shape Circle",
@@ -18,5 +17,6 @@
   "The Color Orange: Orange Car, Orange Balloon, Orange Apple",
   "The Color White: White Paper, White Balloon, White Cloud, White Cookie",
   "The Simple Vehicle Family: Car, Bus, Train, Boat",
-  "The Simple Household Object: Table"
+  "The Simple Household Object: Table",
+  "The Simple Household Object: Blanket"
 ]
